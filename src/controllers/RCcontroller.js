@@ -31,13 +31,12 @@ module.exports = {
                 valor_venda,
                 quantidade,
             })
-            reqCompra.addMatp(mp)
             try {
                 reqCompra.setProduto_final(pf)
                 
-                for (let index = 0; index < arr.length; index++) {
-                    console.log(arr[index])
-                    const mp = await MateriaPrima.findOne({ where: {codigo: arr[index]}})
+                for (let index = 0; index < req.body.mp.length; index++) {
+                    //console.log(arr[index])
+                    const mp = await MateriaPrima.findOne({ where: {codigo: req.body.mp[index]}})
                     
                     reqCompra.addMatp(mp)
                 }
