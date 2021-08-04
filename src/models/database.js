@@ -17,5 +17,5 @@ MateriaPrima.associate(connection.models)
 ProdutoFinal.associate(connection.models)
 ReqCompra.associate(connection.models)
 
-//connection.sync()
+//connection.sync({ force: true })
 module.exports = connection;

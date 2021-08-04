@@ -19,7 +19,10 @@ class produto_final extends Model {
 
     static associate(models) {
         this.belongsToMany(models.mat_prima, {as:'mp',through: "listas"})
+
     }
+
+
 
 }
 

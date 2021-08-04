@@ -5,7 +5,8 @@ const PFcontroller = require('../controllers/PFcontroller')
 const RCcontroller = require('../controllers/RCcontroller')
 
 //Pagina de teste
-router.get('/', (req,res) => {res.send('Em teste...')})
+router.get('/', (req,res) => {res.send('pagina inicial')});
+
 
 //Paginas relacionadas a itens
 
@@ -42,6 +43,11 @@ router.delete('/pf/remove/mp')
 
 //Cria requisição de produto final
 router.post('/rc/create', RCcontroller.createRC)
+//Pega materia primas 
+router.post('/rc/catalogue/mp', RCcontroller.ListMatp)
+//add matprime a req
+router.post('/rc/add/mp', RCcontroller.AddMatp)
+
 
 
 

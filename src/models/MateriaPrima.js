@@ -10,8 +10,8 @@ class mat_prima extends Model {
             descricao: DataTypes.STRING,
             unid_medida: DataTypes.STRING(2),
             tipo: DataTypes.STRING(10),
-            valor_compra: DataTypes.NUMBER, //integer or decimal
-            valor_venda: DataTypes.NUMBER,
+            valor_compra: DataTypes.INTEGER, //integer or decimal
+            valor_venda: DataTypes.INTEGER,
             quantidade: DataTypes.INTEGER
 
         }, {
@@ -21,11 +21,11 @@ class mat_prima extends Model {
 
     static associate (models) {
         this.belongsToMany(models.produto_final, {as:'pf', through: "listas"})
+        this.belongsToMany(models.req_compra, {as:'rc', through: "requisitions"})
+
     }
 
-    static associate (models) {
-        this.belongsToMany(models.req_compra, {as:'rc', through: "requisitions"})
-    }
+
 }
 
 module.exports = mat_prima

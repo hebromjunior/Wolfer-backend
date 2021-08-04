@@ -6,8 +6,8 @@ class req_compra extends Model {
             codigo: DataTypes.STRING(4),
             descricao: DataTypes.STRING,
             tipo: DataTypes.STRING(10),
-            valor_compra: DataTypes.NUMBER, //integer or decimal
-            valor_venda: DataTypes.NUMBER,
+            valor_compra: DataTypes.INTEGER, //integer or decimal
+            valor_venda: DataTypes.INTEGER,
             quantidade: DataTypes.INTEGER
 
         }, {
@@ -15,12 +15,12 @@ class req_compra extends Model {
         })
     }
     static associate (models) {
-        this.hasMany(models.mat_prima, {as:'matp', through: "requisitions"})
+
+        this.belongsToMany(models.mat_prima, {as:'matp', through: "requisitions"})
+        this.belongsTo(models.produto_final)
     }
 
-    static associate (models) {
-        this.belongsTo(models.produto_final, {as:'prodf', through: "requisitions"})
-    }
+    
 
 }
 

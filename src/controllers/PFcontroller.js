@@ -49,12 +49,22 @@ module.exports = {
 
     //adiciona relação produto-final <=> materia-prima
     async AddMp (req,res) {
+
+        var arr = JSON.parse(req.body.mp)
         const pf = await ProdutoFinal.findOne({ where: {codigo: req.body.pf}})
-        const mp = await MateriaPrima.findOne({ where: {codigo: req.body.mp}})
-        pf.addMp(mp)
-        .then(res => {return res.send('success')})
-        .catch(err => {return res.json(err)})
-        
+
+        for (let index = 0; index < arr.length; index++) {
+            console.log(arr[index])
+            const mp = await MateriaPrima.findOne({ where: {codigo: arr[index]}})
+            
+            pf.addMp(mp)
+        }
+        //const pf = await ProdutoFinal.findOne({ where: {codigo: req.body.pf}})
+        //const mp = await MateriaPrima.findOne({ where: {codigo: req.body.mp}})
+        //pf.addMp(mp)
+        //.then(res => {return res.send('success')})
+        //.catch(err => {return res.json(err)})
+        //return res.send(Object.keys(pf.__proto__))
     },
 
     async ListMp (req,res) {
