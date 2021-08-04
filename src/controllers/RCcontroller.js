@@ -49,6 +49,12 @@ module.exports = {
         }
     },
 
+
+    async GetAllRc (req, res) {
+        const requisitions = await ReqCompra.findAll()
+        res.json(requisitions)
+    },
+
     async ListMatp (req,res){
         const rc = await ReqCompra.findOne({ where: { codigo: req.body.rc }})
         if (!rc) return res.status(400).send({ error: 'requisição nao existe' })

@@ -43,6 +43,8 @@ router.delete('/pf/remove/mp')
 
 //Cria requisição de produto final
 router.post('/rc/create', RCcontroller.createRC)
+//Resgatar todas as requisicoes
+router.get('/rc/catalogue/all', RCcontroller.GetAllRc)
 //Pega materia primas 
 router.post('/rc/catalogue/mp', RCcontroller.ListMatp)
 //add matprime a req
