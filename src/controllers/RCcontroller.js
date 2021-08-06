@@ -33,9 +33,9 @@ module.exports = {
             try {
                 reqCompra.setProduto_final(pf)
                 
-                for (let index = 0; index < req.body.mp.length; index++) {
+                for (let index = 0; index < JSON.parse(req.body.mp).length; index++) {
                     //console.log(arr[index])
-                    const mp = await MateriaPrima.findOne({ where: {codigo: req.body.mp[index]}})
+                    const mp = await MateriaPrima.findOne({ where: {codigo: JSON.parse(req.body.mp)[index]}})
                     
                     reqCompra.addMatp(mp)
                 }
