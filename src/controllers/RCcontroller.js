@@ -2,7 +2,6 @@ const ReqCompra = require ('../models/ReqCompra')
 const ProdutoFinal = require ('../models/ProdutoFinal')
 const MateriaPrima = require ('../models/MateriaPrima')
 
-
 module.exports = {
 
     async createRC (req, res) {
@@ -50,7 +49,10 @@ module.exports = {
 
 
     async GetAllRc (req, res) {
-        const requisitions = await ReqCompra.findAll()
+        const requisitions = await ReqCompra.findAll({atributes:['codigo', 'descricao'], include:[{model: MateriaPrima, as: 'matp'}]})
+        await requisitions.forEach((value) =>{
+            console.log(value)
+        })
         res.json(requisitions)
     },
 
